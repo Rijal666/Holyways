@@ -15,11 +15,15 @@ import (
 
 type handlerDonate struct {
 	DonateRepository repositories.DonateRepository
+	UserRepository repositories.UserRepository
+	FundingRepository repositories.FundingRepository
 }
 
-func HandlerDonate(DonateRepository repositories.DonateRepository) *handlerDonate{
+func HandlerDonate(DonateRepository repositories.DonateRepository, UserRepository repositories.UserRepository,FundingRepository repositories.FundingRepository) *handlerDonate{
 	return &handlerDonate{
 		DonateRepository: DonateRepository,
+		UserRepository: UserRepository,
+		FundingRepository: FundingRepository,
 	}
 }
 

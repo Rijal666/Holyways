@@ -20,14 +20,14 @@ func RepositoryFunding(db *gorm.DB) *repository{
 
 func (r *repository) FindFundings() ([]models.Funding, error) {
 	var Fundings []models.Funding
-	err := r.db.Preload("Donate").Find(&Fundings).Error
+	err := r.db.Find(&Fundings).Error
 
 	return Fundings, err
 }
 
 func (r *repository) GetFunding(ID int) (models.Funding, error) {
 	var funding models.Funding
-	err := r.db.Preload("Donate").First(&funding, ID).Error
+	err := r.db.First(&funding, ID).Error
 
 	return funding, err
 }

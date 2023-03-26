@@ -38,7 +38,7 @@ function Landing() {
         </Col>
       </Row>
       <Row>
-      <Card.Title className="fw-bold fs-1 text-center" style={{color:"#dc3545"}}>Donate Now</Card.Title>
+      <Card.Title className="fw-bold fs-1 text-center" style={{color:"#dc3545", marginTop:"50px"}}>Donate Now</Card.Title>
       </Row>
     </Container>
   );

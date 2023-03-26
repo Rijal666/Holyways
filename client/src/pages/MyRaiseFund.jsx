@@ -1,6 +1,6 @@
 import {Container, Button} from 'react-bootstrap';
 import Header from '../components/Header';
-import Cards from '../components/Card';
+import Cards from '../components/CardAdmin';
 
 function MyRaiseFund() {
   return (
@@ -14,12 +14,12 @@ function MyRaiseFund() {
             </p>
             </div>
             <div>
-            <Button variant='danger' className='mt-3' >
+            <Button href='/MakeRaiseFund' variant='danger' className='mt-3'>
                 Make Raise Fund
             </Button>
             </div>
         </div>
-        <div style={{ backgroundColor:"red"}}>
+        <div>
         <Cards/>
         </div>
     </Container>

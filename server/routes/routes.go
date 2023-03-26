@@ -7,4 +7,5 @@ func Routes(e *echo.Group) {
 	UserRoutes(e)
 	FundingRoutes(e)
 	DonateRoutes(e)
+	ProfileRoutes(e)
 }

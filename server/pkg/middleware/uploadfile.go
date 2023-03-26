@@ -11,9 +11,13 @@ import (
 
 func UploadFile(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		file, err := c.FormFile("thumbnail")
+		file, err := c.FormFile("photo")
 		if err != nil {
-			return c.JSON(http.StatusBadRequest, err.Error())
+			file, err = c.FormFile("thumbnail")
+			if err != nil{
+
+				return c.JSON(http.StatusBadRequest, err.Error())
+			}
 		}
 
 		ext := filepath.Ext(file.Filename)

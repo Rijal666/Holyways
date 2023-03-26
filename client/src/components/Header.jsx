@@ -40,7 +40,7 @@ function Header() {
 
   const checkUser = async () => {
     try {
-      const response = await API.get("/check-auth");
+      const response = await API.get("/checkAuth");
       console.log("check user success : ", response);
       // Get user data
       let payload = response.data.data;
@@ -104,11 +104,11 @@ function Header() {
 
             {state.isLogin === true ? (
                 state.user.is_admin === true ? (
-                    <Nav className="ms-auto gap-3">
+                    <Nav className="ms-auto me-5">
                   <NavDropdown title={<img src="/image/profileh.png" alt="" style={{ content: "none" }} />}>
-                    <NavDropdown.Item href="/add-product">
+                    <NavDropdown.Item href="/MakeRaiseFund" style={{marginRight:"-15px"}}>
                       <img src="/image/RaiseFund.png" alt="" style={{ width: 40, height: 38.17 }} />
-                      <span className="ms-2 fw-bold">Raise Fund Product</span>
+                      <span className="ms-2 fw-bold">Raise Fund</span>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={logout}>
@@ -120,7 +120,7 @@ function Header() {
                 ) : (
                     <Nav className="ms-auto gap-3">
                     <NavDropdown title={<img src="/image/profileh.png" alt="" />}>
-                      <NavDropdown.Item href="/my-transaction">
+                      <NavDropdown.Item href="/MyProfile">
                         <img src="/image/Profilek.png" alt="" style={{ width: 40, height: 38.17 }} />
                         <span className="ms-2 fw-bold">Profil</span>
                       </NavDropdown.Item>

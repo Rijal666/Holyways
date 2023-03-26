@@ -11,7 +11,9 @@ import (
 
 func DonateRoutes(e *echo.Group) {
 	DonateRepository := repositories.RepositoryDonate(mysql.ConnDB)
-	h := handlers.HandlerDonate(DonateRepository)
+	UserRepository := repositories.RepositoryUser(mysql.ConnDB)
+	FundingRepository := repositories.RepositoryFunding(mysql.ConnDB)
+	h := handlers.HandlerDonate(DonateRepository, UserRepository, FundingRepository)
 
 	e.GET("/donates", h.FindDonate)
 	e.GET("/donate/:id", h.GetDonate)

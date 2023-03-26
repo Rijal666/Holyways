@@ -42,7 +42,7 @@ export const Login = (props) => {
 
       // Status check
       if (response.data.data.is_admin === true) {
-        Navigate("/");
+        Navigate("/MyRaiseFund");
       }
       Swal.fire({
         position: 'center',
