@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"context"
 	"fmt"
 	fundingdto "holyways/dto/funding"
 	dto "holyways/dto/result"
@@ -11,17 +10,10 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/cloudinary/cloudinary-go/v2"
-	"github.com/cloudinary/cloudinary-go/v2/api/uploader"
 	"github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/labstack/echo/v4"
 )
-
-var ctx = context.Background()
-var CLOUD_NAME = os.Getenv("CLOUD_NAME")
-var API_KEY = os.Getenv("API_KEY")
-var API_SECRET = os.Getenv("API_SECRET")
 
 type handlerFunding struct {
 	FundingRepository repositories.FundingRepository
@@ -77,19 +69,9 @@ func (h *handlerFunding) CreateFunding(c echo.Context) error {
 			return c.JSON(http.StatusInternalServerError, dto.ErrorResult{Status: http.StatusInternalServerError, Message: err.Error()})
 		}
 
-		// Add your Cloudinary credentials ...
-cld, _ := cloudinary.NewFromParams(CLOUD_NAME, API_KEY, API_SECRET)
-
-// Upload file to Cloudinary ...
-resp, err := cld.Upload.Upload(ctx, dataFile, uploader.UploadParams{Folder: "dumbmerch"});
-
-if err != nil {
-  fmt.Println(err.Error())
-}
-
 		funding := models.Funding{
 			Title: request.Title,
-			Thumbnail: resp.SecureURL, // Modify store file URL to database from resp.SecureURL ...
+			Thumbnail: request.Thumbnail,
 			Goals: request.Goals,
 			Description: request.Description,
 		}
